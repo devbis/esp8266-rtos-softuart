@@ -22,6 +22,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 #ifdef __cplusplus
 extern "C"
@@ -44,7 +45,7 @@ extern "C"
  * @param tx_pin GPIO pin number for TX
  * @return true if no errors occured otherwise false
  */
-bool softuart_open(uint8_t uart_no, uint32_t baudrate, uint32_t rx_pin, uint32_t tx_pin);
+bool softuart_open(uint8_t uart_no, uint32_t baudrate, uint32_t rx_pin, uint32_t tx_pin, bool invert);
 
 /**
  * Deinitialize software uart
@@ -68,6 +69,11 @@ bool softuart_put(uint8_t uart_no, char c);
  * @return true if no errors occured otherwise false
  */
 bool softuart_puts(uint8_t uart_no, const char *s);
+
+/**
+ * Put string with length to software uart
+ */
+bool softuart_putn(uint8_t uart_no, const uint8_t* s, size_t n);
 
 /**
  * Check if data is available
